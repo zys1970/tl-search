@@ -1,0 +1,38 @@
+[package]
+name = "tl-search"
+version = "0.1.5"
+edition = "2021"
+authors = ["tl1015"]
+license = "MIT"
+description = "纯 Rust 中文全文搜索引擎"
+repository = "https://github.com/zys1970/tl-search"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+once_cell = "1.19"
+jieba-rs = "0.6"
+getrandom = { version = "0.2", features = ["js"] }
+serde-wasm-bindgen = "0.6"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+debug = false
+strip = "debuginfo"
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = true
+
+[package.metadata.wasm-pack]
+description = "纯 Rust 中文全文搜索引擎"
+types = "tl_search.d.ts"
+files = ["tl_search_bg.wasm", "tl_search.js", "tl_search.d.ts"]
+keywords = ["search","rust","wasm","chinese","fulltext","minisearch","jieba","中文搜索"]
+sideEffects = false
+type = "module"
+main = "tl_search.js"
