@@ -8,7 +8,7 @@ description = "纯 Rust 中文全文搜索引擎"
 repository = "https://github.com/zys1970/tl-search"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["rlib", "cdylib"]
 
 [dependencies]
 wasm-bindgen = "0.2"
